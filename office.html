@@ -278,7 +278,7 @@ const signCv=document.createElement('canvas');signCv.width=1024;signCv.height=20
  const gr=c.createLinearGradient(0,0,1024,0);['#ffb547','#ff6fa8','#ff5a5a','#4fd1c5','#7c9cff','#b6f05a'].forEach((col,k)=>gr.addColorStop(k/5,col));
  c.fillStyle=gr;c.fillRect(0,182,1024,18);
  c.fillStyle='#fff';c.font='900 92px "Malgun Gothic",sans-serif';c.textAlign='center';c.fillText(OFFICE_NAME,512,112);
- c.fillStyle='#b3aedb';c.font='700 30px sans-serif';c.fillText('SHINY OFFICE · AI STAFF 6',512,160)})();
+ c.fillStyle='#b3aedb';c.font='700 30px sans-serif';c.fillText('SHINY OFFICE · AI STAFF '+(ROLES.length-1),512,160)})();
 const signTex=new THREE.CanvasTexture(signCv);signTex.encoding=THREE.sRGBEncoding;
 const signM=new THREE.Mesh(new THREE.PlaneGeometry(5.6,1.1),new THREE.MeshBasicMaterial({map:signTex}));
 signM.position.set(0,5.7,-8.98);scene.add(signM);
@@ -775,7 +775,7 @@ function loop(now){
  requestAnimationFrame(loop);
 }
 agents.forEach(a=>drawScreen(a,'idle',0));
-document.title=OFFICE_NAME+' 3D';(()=>{const w=OFFICE_NAME.split(' '),l=w.pop();document.querySelector('h1').innerHTML=(w.length?w.join(' ')+' ':'')+'<span>'+l+'</span>'})();
+document.title=OFFICE_NAME+' 3D';document.querySelector('.sign').textContent='SHINY OFFICE · AI STAFF '+(ROLES.length-1);(()=>{const w=OFFICE_NAME.split(' '),l=w.pop();document.querySelector('h1').innerHTML=(w.length?w.join(' ')+' ':'')+'<span>'+l+'</span>'})();
 startProject();tickHeader();
 pollStatus();setInterval(pollStatus,4000);
 requestAnimationFrame(loop);
