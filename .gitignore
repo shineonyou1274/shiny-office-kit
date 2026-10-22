@@ -1,0 +1,7 @@
+# 내 사무실 설정과 작업 기록 (업데이트해도 안 지워짐)
+my-office.md
+config.js
+staff/
+status.js
+handoff/*
+!handoff/README.txt
