@@ -11,7 +11,7 @@ description: "샤이니 사무실 키트: AI 직원 사무실. 사용자가 사�
 
 ## 폴더
 
-`OFFICE_DIR` = 이 SKILL.md가 들어 있는 폴더. 따로 설정하지 않는다.
+`OFFICE_DIR` = 이 SKILL.md가 들어 있는 폴더. 따로 설정하지 않는다. 이 문서의 경로는 윈도우식 `\`로 적었다. 맥·리눅스에서는 `/`로 읽고, 파일을 쓸 때도 그 OS의 구분자를 쓴다.
 
 | 파일 | 누가 만드나 | 내용 |
 |---|---|---|
@@ -81,7 +81,7 @@ window.OFFICE_CONFIG={
 
 **4단계. 보고**
 
-"사무실 차렸어요" + 직원 명부 표 + `office.html` 절대경로 + "크롬으로 열어 두고 '(첫 번째 직원 이름)아/야, ~해줘'처럼 부르면 됩니다." (실제 직원 이름으로 바꿔서) 직원을 바꾸고 싶으면 언제든 "직원 바꿔줘"라고 하면 1~3단계를 다시 한다.
+"사무실 차렸어요" + 직원 명부 표 + `office.html` 절대경로 + "브라우저(크롬·사파리 등 3D가 되는 것)로 열어 두고 '(첫 번째 직원 이름)아/야, ~해줘'처럼 부르면 됩니다." (실제 직원 이름으로 바꿔서) 직원을 바꾸고 싶으면 언제든 "직원 바꿔줘"라고 하면 1~3단계를 다시 한다.
 
 ## 1. 사무실 규칙 (전 직원)
 
@@ -128,7 +128,7 @@ const OFFICE_DIR='<이 SKILL.md가 있는 폴더 절대경로>';
 const hm=()=>new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',hour12:false});
 async function officeUpdate(st){
   st.updated=new Date().toISOString();
-  await fs.writeFile(OFFICE_DIR+'\\status.js','window.__OFFICE__&&window.__OFFICE__('+JSON.stringify(st)+');\n','utf8');
+  await fs.writeFile(path.join(OFFICE_DIR,'status.js'),'window.__OFFICE__&&window.__OFFICE__('+JSON.stringify(st)+');\n','utf8');
 }
 function officeLog(st,who,text){ st.log.push({time:hm(),who,text}); if(st.log.length>40) st.log.shift(); }
 ```
